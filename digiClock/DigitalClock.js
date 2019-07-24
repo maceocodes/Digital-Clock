@@ -1,10 +1,10 @@
 function showTime() {
     options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'}
-    date = new Date();
-    hr = date.getHours();
-    min = date.getMinutes();
-    sec = date.getSeconds();
-    period = "am";
+    var date = new Date();
+    var hr = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    var period = "am";
 
     if(hr == 0){
         hr = 12;
@@ -23,7 +23,7 @@ function showTime() {
     document.getElementById("displayTime").innerHTML = time;
     document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
 
-
+    setTimeout(showTime, 1000);
 
 
     
