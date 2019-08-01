@@ -1,3 +1,5 @@
+
+
 function showTime() {
     options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'}
     var date = new Date();
@@ -15,7 +17,6 @@ function showTime() {
         period = "pm";
     }
 
-    
     min = (min < 10) ? "0" + min : min;
     sec = (sec < 10) ? "0" + sec : sec;
 
@@ -23,11 +24,29 @@ function showTime() {
     document.getElementById("displayTime").innerHTML = time;
     document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
 
-    setTimeout(showTime, 1000);
+    var startTime = setTimeout(showTime, 1000);
+
+    document.getElementById("set").addEventListener
+    ("click", function setAlarm(){
+    clearTimeout(startTime);
+    });
 
 
-    
 }
 
 showTime();
+
+
+//set button functions
+/*const uAlarm = document.getElementById("set");
+uAlarm.addEventListener("click", hello);
+
+function hello(){
+    window.alert("Hello world!");
+} */
+
+
+
+
+
 
