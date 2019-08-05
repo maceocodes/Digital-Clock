@@ -12,7 +12,7 @@ function showTime() {
         hr = 12;
     }
 
-    if(hr >= 12){
+    if(hr > 12){
         hr = hr - 12;
         period = "pm";
     }
@@ -27,9 +27,13 @@ function showTime() {
     var startTime = setTimeout(showTime, 1000);
 
     //Set Alarm
-    document.getElementById("set").addEventListener
+    document.getElementById("setButton").addEventListener
     ("click", function setAlarm(){
     clearTimeout(startTime);
+    var hr = "-";
+    var min = "-";
+    var time = hr + ":" + min;
+    document.getElementById("displayTime").innerHTML = time;
     });
 
 
