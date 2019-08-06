@@ -24,18 +24,20 @@ function showTime() {
     document.getElementById("displayTime").innerHTML = time;
     document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
 
+    
     var startTime = setTimeout(showTime, 1000);
 
     //Set Alarm
-    document.getElementById("setButton").addEventListener
-    ("click", function setAlarm(){
-    clearTimeout(startTime);
-    var hr = "-";
-    var min = "-";
-    var time = hr + ":" + min;
-    document.getElementById("displayTime").innerHTML = time;
-    });
+    var set = document.getElementById("setButton");
 
+    set.onclick = function(){
+        var timeVis = document.getElementById("displayTime");
+        if (timeVis.style.display !== 'none') {
+            timeVis.style.display = 'none';
+        } else {
+            timeVis.style.display = 'block';
+        }        
+    }
 
 }
 
