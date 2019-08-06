@@ -24,45 +24,59 @@ function showTime() {
     document.getElementById("displayTime").innerHTML = time;
     document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
 
-    
     var startTime = setTimeout(showTime, 1000);
-
-
-//Alarm Functionality
-
-    /*document.getElementById("setButton").onclick = function() {
-        document.getElementById("displayTime").style.display = "none";
-        document.getElementById("setInput").style.display = "block";
-    
-    //Set Alarm
-    document.getElementById("setButton").addEventListener
-    ("click", function setAlarm(){
-    clearTimeout(startTime);
-    });*/
 
 }
 
 showTime();
 
-var set = document.getElementById("setButton");
+
+//Alarm Functionality
+//toggle input, clock visibility, and cancel button display
+var set = document.getElementById("setBttn");
 var timeVis = document.getElementById("displayTime");
+var cancelVis = document.getElementById("cancelBttn");
+var inputVis = document.getElementById("setInput");
+
+
+var eToHide = document.getElementsByClassName("savOrCncl");
+var i;
+for(var i = 0; i<eToHide.length; i++){
+    eToHide[i].style.display = "none";    
+}
 
 set.addEventListener('click', function(){
+    //toggle time display
     if (timeVis.style.display !== 'none') {
         timeVis.style.display = 'none';
     } else {
         timeVis.style.display = 'block';
-    }        
+    }          
+
+    //toggle input display
+    if (inputVis.style.display !== 'none') {
+        inputVis.style.display = 'none';
+    } else {
+        inputVis.style.display = 'block';
+    } 
+
+    //toggle cancelBttn display
+    if (cancelVis.style.display !== 'none') {
+        cancelVis.style.display = 'none';
+    } else {
+        cancelVis.style.display = 'block';
+    } 
+
+    //change text for setBttn upon clicking
+    if (set.innerText !== "set"){
+        set.innerText = "set";
+    } else {
+        set.innerText = 'save';
+    }
 });
 
 
-//set button functions
-/*const uAlarm = document.getElementById("set");
-uAlarm.addEventListener("click", hello);
 
-function hello(){
-    window.alert("Hello world!");
-} */
 
 
 
