@@ -27,21 +27,33 @@ function showTime() {
     
     var startTime = setTimeout(showTime, 1000);
 
-    //Set Alarm
-    var set = document.getElementById("setButton");
 
-    set.onclick = function(){
-        var timeVis = document.getElementById("displayTime");
-        if (timeVis.style.display !== 'none') {
-            timeVis.style.display = 'none';
-        } else {
-            timeVis.style.display = 'block';
-        }        
-    }
+//Alarm Functionality
+
+    /*document.getElementById("setButton").onclick = function() {
+        document.getElementById("displayTime").style.display = "none";
+        document.getElementById("setInput").style.display = "block";
+    
+    //Set Alarm
+    document.getElementById("setButton").addEventListener
+    ("click", function setAlarm(){
+    clearTimeout(startTime);
+    });*/
 
 }
 
 showTime();
+
+var set = document.getElementById("setButton");
+var timeVis = document.getElementById("displayTime");
+
+set.addEventListener('click', function(){
+    if (timeVis.style.display !== 'none') {
+        timeVis.style.display = 'none';
+    } else {
+        timeVis.style.display = 'block';
+    }        
+});
 
 
 //set button functions
