@@ -19,6 +19,7 @@ function showTime() {
 
     min = (min < 10) ? "0" + min : min;
     sec = (sec < 10) ? "0" + sec : sec;
+    
 
     var time = hr + ":" + min + ":" + sec + " " + period; 
     document.getElementById("displayTime").innerHTML = time;
@@ -31,7 +32,6 @@ function showTime() {
 showTime();
 
 
-//Alarm Functionality
 //toggle input, clock visibility, and cancel button display
 var set = document.getElementById("setBttn");
 var timeVis = document.getElementById("displayTime");
@@ -76,8 +76,15 @@ set.addEventListener('click', function(){
 });
 
 
-
-
+    //user input
+function isNum(event){
+    var charCode = event.keyCode;
+    //Non-numeric character range
+    if (charCode > 31 && (charCode < 48 || charCode > 58)){
+        alert(" time should be entered in hours : minutes format. Ex. 10:30");
+        return false;
+    }
+} 
 
 
 
