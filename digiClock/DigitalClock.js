@@ -45,22 +45,30 @@ for(var i = 0; i<eToHide.length; i++){
     eToHide[i].style.display = "none";    
 }
 
-set.addEventListener('click', function(){
-    //toggle time display
+var setOrSave = (function() {
+    var setClick = true;
+    return function() {
+      setClick ? enterTime() : saveTime();
+      setClick = !setClick;
+    }
+  })();
+
+function enterTime() {
+    //toggle time visibility 
     if (timeVis.style.display !== 'none') {
         timeVis.style.display = 'none';
     } else {
         timeVis.style.display = 'block';
     }          
 
-    //toggle input display
+    //toggle input visibility
     if (inputVis.style.display !== 'none') {
         inputVis.style.display = 'none';
     } else {
         inputVis.style.display = 'block';
     } 
 
-    //toggle cancelBttn display
+    //toggle cancelBttn visibility
     if (cancelVis.style.display !== 'none') {
         cancelVis.style.display = 'none';
     } else {
@@ -73,18 +81,25 @@ set.addEventListener('click', function(){
     } else {
         set.innerText = 'save';
     }
-});
+};
 
+function saveTime() {
+    alert("do something else");
+};
 
     //user input
-function isNum(event){
-    var charCode = event.keyCode;
-    //Non-numeric character range
-    if (charCode > 31 && (charCode < 48 || charCode > 58)){
-        alert(" time should be entered in hours : minutes format. Ex. 10:30");
-        return false;
-    }
-} 
+// function isNum(event){
+//     var e = event || window.event
+//     var key = e.keyCode || e.which;
+//     //Non-numeric character range
+//     if (key > 31 && (key < 48 || key > 58)){
+
+//         if(e.preventDefaut) e.preventDefaut();
+//         e.returnValue = false;
+//         alert(" time should be entered in hours : minutes format. Ex. 10:30");
+//     }
+// } 
+
 
 
 
