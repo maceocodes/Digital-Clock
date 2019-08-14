@@ -53,6 +53,17 @@ function one(){
         eToHide[i].style.display = "none";    
     }
 
+    // document.getElementByID('setBttn').onClick = setOrSave;
+
+    // function setOrSave(){
+    //     var setClick = true;
+    //         return function() {
+    //         setClick ? enterTime() : saveTime();
+    //         setClick = !setClick;
+    //         }
+    // }
+
+
     // var setOrSave = (function() {
     //     var setClick = true;
     //     return function() {
@@ -60,14 +71,6 @@ function one(){
     //     setClick = !setClick;
     //     }
     // })();
-
-    document.getElementById('setBttn').addEventListener('click', function(){
-        var setClick = true;
-        return function() {
-        setClick ? enterTime() : saveTime();
-        setClick = !setClick;
-        }
-    });
         
     function enterTime() {
         //initial click to enter time
@@ -90,9 +93,11 @@ function one(){
         set.innerText = 'set';
     };
 
-    // document.getElementById('setBttn').addEventListener('click', function(){
-    //     alert('something written here');
-    // });
+    document.getElementById('setBttn').addEventListener('click', function(){
+        
+        var setClick = (setClick = true) ? enterTime() : saveTime();
+        setClick = !setClick;
+    });
 
 
 
