@@ -1,14 +1,18 @@
 
 function one(){
-
+    var date;
+    var hr;
+    var min;
+    var sec;
+    var period;
 
     function showTime() {
-        var options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'}
-        var date = new Date();
-        var hr = date.getHours();
-        var min = date.getMinutes();
-        var sec = date.getSeconds();
-        var period = "am";
+        options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'}
+         date = new Date();
+         hr = date.getHours();
+         min = date.getMinutes();
+         sec = date.getSeconds();
+         period = "am";
     
         if(hr == 0){
             hr = 12;
@@ -34,54 +38,112 @@ function one(){
     
     showTime(); 
 
+    //toggle input, clock and cancel button, set/save button display.  
+    var set = document.getElementById("setBttn");
+    var timeVis = document.getElementById("displayTime");
+    var cancelVis = document.getElementById("cancelBttn");
+    var inputVis = document.getElementById("setInput");
+    var amVis = document.getElementById("am");
+    var pmVis = document.getElementById("pm");
+
+
+    var eToHide = document.getElementsByClassName("savOrCncl");
+    var i;
+    for(var i = 0; i<eToHide.length; i++){
+        eToHide[i].style.display = "none";    
+    }
+
+    // var setOrSave = (function() {
+    //     var setClick = true;
+    //     return function() {
+    //     setClick ? enterTime() : saveTime();
+    //     setClick = !setClick;
+    //     }
+    // })();
+
+    document.getElementById('setBttn').addEventListener('click', function(){
+        var setClick = true;
+        return function() {
+        setClick ? enterTime() : saveTime();
+        setClick = !setClick;
+        }
+    });
+        
+    function enterTime() {
+        //initial click to enter time
+        timeVis.style.display = 'none';
+        inputVis.style.display = 'block';
+        cancelVis.style.display = 'block';
+        amVis.style.display = 'block';
+        pmVis.style.display = 'block';
+        set.innerText = 'save';
+    };
+
+    function saveTime() {
+        //second click to save entered time.
+        timeVis.style.display = 'block';
+        inputVis.style.display = 'none';
+        cancelVis.style.display = 'none';
+        amVis.style.display = 'none';
+        pmVis.style.display = 'none';
+        set.style.display = 'block';
+        set.innerText = 'set';
+    };
+
+    // document.getElementById('setBttn').addEventListener('click', function(){
+    //     alert('something written here');
+    // });
+
+
+
 } 
 one();
 
 
 
 //toggle input, clock and cancel button, set/save button display.  
-var set = document.getElementById("setBttn");
-var timeVis = document.getElementById("displayTime");
-var cancelVis = document.getElementById("cancelBttn");
-var inputVis = document.getElementById("setInput");
-var amVis = document.getElementById("am");
-var pmVis = document.getElementById("pm");
+// var set = document.getElementById("setBttn");
+// var timeVis = document.getElementById("displayTime");
+// var cancelVis = document.getElementById("cancelBttn");
+// var inputVis = document.getElementById("setInput");
+// var amVis = document.getElementById("am");
+// var pmVis = document.getElementById("pm");
 
 
-var eToHide = document.getElementsByClassName("savOrCncl");
-var i;
-for(var i = 0; i<eToHide.length; i++){
-    eToHide[i].style.display = "none";    
-}
+// var eToHide = document.getElementsByClassName("savOrCncl");
+// var i;
+// for(var i = 0; i<eToHide.length; i++){
+//     eToHide[i].style.display = "none";    
+// }
 
-var setOrSave = (function() {
-    var setClick = true;
-    return function() {
-      setClick ? enterTime() : saveTime();
-      setClick = !setClick;
-    }
-  })();
+// var setOrSave = (function() {
+//     var setClick = true;
+//     return function() {
+//       setClick ? enterTime() : saveTime();
+//       setClick = !setClick;
+//     }
+//   })();
 
-function enterTime() {
-    //initial click to enter time
-    timeVis.style.display = 'none';
-    inputVis.style.display = 'block';
-    cancelVis.style.display = 'block';
-    amVis.style.display = 'block';
-    pmVis.style.display = 'block';
-    set.innerText = 'save';
-};
+// function enterTime() {
+//     //initial click to enter time
+//     timeVis.style.display = 'none';
+//     inputVis.style.display = 'block';
+//     cancelVis.style.display = 'block';
+//     amVis.style.display = 'block';
+//     pmVis.style.display = 'block';
+//     set.innerText = 'save';
+// };
 
-function saveTime() {
-    //second click to save entered time.
-    timeVis.style.display = 'block';
-    inputVis.style.display = 'none';
-    cancelVis.style.display = 'none';
-    amVis.style.display = 'none';
-    pmVis.style.display = 'none';
-    set.style.display = 'block';
-    set.innerText = 'set';
-};
+// function saveTime() {
+//     //second click to save entered time.
+//     timeVis.style.display = 'block';
+//     inputVis.style.display = 'none';
+//     cancelVis.style.display = 'none';
+//     amVis.style.display = 'none';
+//     pmVis.style.display = 'none';
+//     set.style.display = 'block';
+//     set.innerText = 'set';
+// };
 
 
 
