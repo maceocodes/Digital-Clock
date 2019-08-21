@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="utf-8"/>
+        <title> Clock </title>      
+
+    </head>
+    <body>
+        <div id="displayTime" onLoad="showTime()"></div>
+        <input type="text" class="savOrCncl" id="setInput" placeholder="Ex. 10:30" onkeypress="return isNum(event)" >
+        <button id="setBttn" >set</button>
+        <button class="savOrCncl" id="am">am</button> 
+        <button class="savOrCncl" id="pm">pm</button> 
+        <!-- <button class="savOrCncl" id="cancelBttn">cancel</button> -->
+        <div id="displayDate"></div>
+
+        <script src="scripts.js"></script>
+    </body>
+</html>
