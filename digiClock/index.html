@@ -8,6 +8,7 @@
         <div id="displayTime" onLoad="showTime()"></div> 
         <label class="savOrCncl" for="hr-select">hour:</label>
         <select class="savOrCncl" id="hr-select">
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -24,6 +25,7 @@
 
         <label class="savOrCncl" for="min-select">minute:</label>
         <select class="savOrCncl" id="min-select">
+            <option value="00">00</option>
             <option value="01">01</option>
             <option value="02">02</option>
             <option value="03">03</option>
@@ -87,13 +89,12 @@
 
         <label class="savOrCncl" for="am-pm">period:</label>
         <select class="savOrCncl" id="am-pm">
+            <option value="am/pm">am/pm</option>
             <option value="am">am</option>
             <option value="pm">pm</option>
         </select>
 
         <button id="setBttn" >set</button>
-        <!-- <button class="savOrCncl" id="am">am</button> 
-        <button class="savOrCncl" id="pm">pm</button>  -->
         <button class="savOrCncl" id="cancelBttn">cancel</button>
         <div id="displayDate"></div>
         <script src="scripts.js"></script>

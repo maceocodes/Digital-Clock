@@ -26,7 +26,6 @@ function one(){
     
         var min = (min < 10) ? "0" + min : min;
         var sec = (sec < 10) ? "0" + sec : sec;
-        
     
         var time = hr + ":" + min + ":" + sec + " " + period; 
         
@@ -34,7 +33,6 @@ function one(){
         document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
     
         startTime = setTimeout(showTime, 1000);
-    
     }  
     showTime(); 
 
@@ -64,6 +62,13 @@ function one(){
             }
         })()
         );
+
+        var hrIndex = document.getElementById("hr-select").selectedIndex();
+        var minIndex = document.getElementById("min-select").selectedIndex();
+        var periodIndex = document.getElementById("am-pm").selectedIndex();
+
+        var userHr = parseInt(hrIndex, 10);
+        var userMin = parseInt(minIndex, 10);
         
     function enterTime() {
         //initial click to enter time
@@ -77,6 +82,7 @@ function one(){
 
     function saveTime() {
         //second click to save entered time.
+        //convert drop down values to intigers
         timeVis.style.display = 'block';
         hrVis.style.display = 'none';
         minVis.style.display = 'none';
@@ -84,14 +90,15 @@ function one(){
         cancelVis.style.display = 'none'; 
         set.style.display = 'block';
         set.innerText = 'set';
+
+
+
+
     };
-
-    function confirmTimeMatch
-
-
-
-
- //drop down menus to select hour and minute
+    
+    if( userHr == hr){
+        alert("success!");
+    };
 
 
  //cancel button returns user to time display
