@@ -6,13 +6,14 @@ function one(){
     var sec;
     var period;
 
+//time display and functionality 
     function showTime() {
         options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'}
-         date = new Date();
-         hr = date.getHours();
-         min = date.getMinutes();
-         sec = date.getSeconds();
-         period = "am";
+        date = new Date();
+        hr = date.getHours();
+        min = date.getMinutes();
+        sec = date.getSeconds();
+        period = "am";
     
         if(hr == 0){
             hr = 12;
@@ -34,19 +35,21 @@ function one(){
     
         startTime = setTimeout(showTime, 1000);
     
-    }    
+    }  
     showTime(); 
 
 
-//toggle visibility for input element, time display, cancel button, set/save button display  
+//toggle visability for input element, time display, cancel button, set/save buttons. 
+
     var set = document.getElementById("setBttn");
     var timeVis = document.getElementById("displayTime");
     var cancelVis = document.getElementById("cancelBttn");
     var inputVis = document.getElementById("setInput");
-    var amVis = document.getElementById("am");
-    var pmVis = document.getElementById("pm");
+    var amPmVis = document.getElementById("am-pm");
+    var hrVis = document.getElementById("hr-select");
+    var minVis = document.getElementById("min-select");
 
-//
+//am/pm button, cancel button, input element hidden upon page load
     var eToHide = document.getElementsByClassName("savOrCncl");
     var i;
     for(var i = 0; i<eToHide.length; i++){
@@ -59,36 +62,46 @@ function one(){
             setClick ? enterTime() : saveTime();
             setClick = !setClick;
             }
-            })()
+        })()
         );
         
     function enterTime() {
         //initial click to enter time
         timeVis.style.display = 'none';
-        inputVis.style.display = 'block';
-        // cancelVis.style.display = 'block';
-        amVis.style.display = 'block';
-        pmVis.style.display = 'block';
+        hrVis.style.display = 'block';
+        minVis.style.display = 'block';
+        amPmVis.style.display = 'block'
+        cancelVis.style.display = 'block';
         set.innerText = 'save';
     };
 
     function saveTime() {
         //second click to save entered time.
         timeVis.style.display = 'block';
-        inputVis.style.display = 'none';
-        // cancelVis.style.display = 'none';
-        amVis.style.display = 'none';
-        pmVis.style.display = 'none';
+        hrVis.style.display = 'none';
+        minVis.style.display = 'none';
+        amPmVis.style.display = 'none'
+        cancelVis.style.display = 'none'; 
         set.style.display = 'block';
         set.innerText = 'set';
     };
 
+    function confirmTimeMatch
 
 
+
+
+ //drop down menus to select hour and minute
+
+
+ //cancel button returns user to time display
+ //clear button to clear saved time
 
 
 } 
 one();
+
+
 
 
 
