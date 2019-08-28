@@ -1,20 +1,15 @@
 
 function one(){
-    var date;
-    var hr;
-    var min;
-    var sec;
-    var period;
+
 
 //time display and functionality 
     function showTime() {
-        options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'}
-        date = new Date();
-        hr = date.getHours();
-        min = date.getMinutes();
-        sec = date.getSeconds();
-        period = "am";
-    
+        var date = new Date();
+        var hr = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        var period = "am";
+        
         if(hr == 0){
             hr = 12;
         }
@@ -24,17 +19,19 @@ function one(){
             period = "pm";
         }
     
-        var min = (min < 10) ? "0" + min : min;
-        var sec = (sec < 10) ? "0" + sec : sec;
+         min = (min < 10) ? "0" + min : min;
+         sec = (sec < 10) ? "0" + sec : sec;
     
-        var time = hr + ":" + min + ":" + sec + " " + period; 
+        time = hr + ":" + min + ":" + sec + " " + period; 
         
         document.getElementById("displayTime").innerHTML = time;
+        options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'};
         document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
     
         startTime = setTimeout(showTime, 1000);
+        
     }  
-    showTime(); 
+    showTime();
 
 
 //toggle visability for input element, time display, cancel button, set/save buttons. 
@@ -53,6 +50,7 @@ function one(){
     for(var i = 0; i<eToHide.length; i++){
         eToHide[i].style.display = "none";    
     }
+    
 
     document.getElementById('setBttn').addEventListener('click', (function() {
             var setClick = true;
@@ -63,12 +61,12 @@ function one(){
         })()
         );
 
-        var hrIndex = document.getElementById("hr-select").selectedIndex();
-        var minIndex = document.getElementById("min-select").selectedIndex();
-        var periodIndex = document.getElementById("am-pm").selectedIndex();
+       
+        
+        var periodIndex = document.getElementById("am-pm").value();
 
-        var userHr = parseInt(hrIndex, 10);
-        var userMin = parseInt(minIndex, 10);
+       
+       
         
     function enterTime() {
         //initial click to enter time
@@ -91,13 +89,17 @@ function one(){
         set.style.display = 'block';
         set.innerText = 'set';
 
+//parse user selection into intiger
+        hrIndex = document.getElementById('hr-select').value;
+        userHr = parseInt(hrIndex, 10);
+        alert(userHr);
 
+        minIndex = document.getElementById('min-select').value;
+        userMin = parseInt(minIndex, 10);
+        alert(userMin);
+        
+        
 
-
-    };
-    
-    if( userHr == hr){
-        alert("success!");
     };
 
 
