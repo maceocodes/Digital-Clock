@@ -1,5 +1,8 @@
 
-function one(){
+
+
+
+
 
 
 //time display and functionality 
@@ -7,8 +10,7 @@ function one(){
         var date = new Date();
         var hr = date.getHours();
         var min = date.getMinutes();
-        var sec = date.getSeconds();
-        var period = "am";
+        var sec = date.getSeconds();     
         
         if(hr == 0){
             hr = 12;
@@ -16,11 +18,11 @@ function one(){
     
         if(hr > 12){
             hr = hr - 12;
-            period = "pm";
         }
-    
-         min = (min < 10) ? "0" + min : min;
-         sec = (sec < 10) ? "0" + sec : sec;
+
+        var period = (date.getHours()) < 12 ? 'am' : 'pm';
+        min = (min < 10) ? "0" + min : min;
+        sec = (sec < 10) ? "0" + sec : sec;
     
         time = hr + ":" + min + ":" + sec + " " + period; 
         
@@ -50,7 +52,6 @@ function one(){
     for(var i = 0; i<eToHide.length; i++){
         eToHide[i].style.display = "none";    
     }
-    
 
     document.getElementById('setBttn').addEventListener('click', (function() {
             var setClick = true;
@@ -60,12 +61,6 @@ function one(){
             }
         })()
         );
-
-       
-        
-        var periodIndex = document.getElementById("am-pm").value();
-
-       
        
         
     function enterTime() {
@@ -91,15 +86,19 @@ function one(){
 
 //parse user selection into intiger
         hrIndex = document.getElementById('hr-select').value;
-        userHr = parseInt(hrIndex, 10);
-        alert(userHr);
+        setHr = parseInt(hrIndex, 10);
+        
 
         minIndex = document.getElementById('min-select').value;
-        userMin = parseInt(minIndex, 10);
-        alert(userMin);
+        setMin = parseInt(minIndex, 10);
         
+        setPeriod = document.getElementById('am-pm').value;
         
-
+        var setTime = setHr + ":" + setMin + ":" + "00" + setPeriod;
+        
+        if(setTime == time) {
+            alert("success");
+            }
     };
 
 
@@ -107,8 +106,7 @@ function one(){
  //clear button to clear saved time
 
 
-} 
-one();
+
 
 
 
