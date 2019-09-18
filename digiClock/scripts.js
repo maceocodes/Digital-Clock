@@ -1,39 +1,58 @@
 
-
-
-
-
-
-
-//time display and functionality 
-    function showTime() {
-        var date = new Date();
-        var hr = date.getHours();
-        var min = date.getMinutes();
-        var sec = date.getSeconds();     
-        
-        if(hr == 0){
-            hr = 12;
-        }
+//Current time display and functionality 
+setInterval(function(){
+    var date = new Date();
+    var hr = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();     
     
-        if(hr > 12){
-            hr = hr - 12;
-        }
+    if(hr == 0){
+        hr = 12;
+    }
 
-        var period = (date.getHours()) < 12 ? 'am' : 'pm';
-        min = (min < 10) ? "0" + min : min;
-        sec = (sec < 10) ? "0" + sec : sec;
-    
-        time = hr + ":" + min + ":" + sec + " " + period; 
+    if(hr > 12){
+        hr = hr - 12;
+    }
+
+    var period = (date.getHours()) < 12 ? 'am' : 'pm';
+    min = (min < 10) ? "0" + min : min;
+    sec = (sec < 10) ? "0" + sec : sec;
+
+    var currentTime = hr + ":" + min + ":" + sec + " " + period; 
+
+    document.getElementById("displayTime").innerHTML = currentTime;
+    options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'};
+    document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
+}, 1000);
+
+    // function showTime() {
+    //     var date = new Date();
+    //     var hr = date.getHours();
+    //     var min = date.getMinutes();
+    //     var sec = date.getSeconds();     
         
-        document.getElementById("displayTime").innerHTML = time;
-        options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'};
-        document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
+    //     if(hr == 0){
+    //         hr = 12;
+    //     }
     
-        startTime = setTimeout(showTime, 1000);
+    //     if(hr > 12){
+    //         hr = hr - 12;
+    //     }
+
+    //     var period = (date.getHours()) < 12 ? 'am' : 'pm';
+    //     min = (min < 10) ? "0" + min : min;
+    //     sec = (sec < 10) ? "0" + sec : sec;
+    
+    //     time = hr + ":" + min + ":" + sec + " " + period; 
         
-    }  
-    showTime();
+    //     document.getElementById("displayTime").innerHTML = time;
+    //     options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'};
+    //     document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
+    
+    //     startTime = setTimeout(showTime, 1000);      
+    // }  
+    // showTime();
+
 
 
 //toggle visability for input element, time display, cancel button, set/save buttons. 
@@ -85,20 +104,50 @@
         set.innerText = 'set';
 
 //parse user selection into intiger
-        hrIndex = document.getElementById('hr-select').value;
-        setHr = parseInt(hrIndex, 10);
+        var setHr = document.getElementById('hr-select').value;
         
 
-        minIndex = document.getElementById('min-select').value;
-        setMin = parseInt(minIndex, 10);
+        var setMin = document.getElementById('min-select').value;
+
+
         
-        setPeriod = document.getElementById('am-pm').value;
+        var setPeriod = document.getElementById('am-pm').value;
         
-        var setTime = setHr + ":" + setMin + ":" + "00" + setPeriod;
-        
-        if(setTime == time) {
-            alert("success");
+        var setMin = (setMin < 10) ? "0" + setMin : setMin;
+        var setTime = setHr + ":" + setMin + ":" + "00" + " " + setPeriod;
+        console.log(setTime);
+    
+//get currentTime again
+        setInterval(function(){
+            var date = new Date();
+            var hr = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();     
+            
+            if(hr == 0){
+                hr = 12;
             }
+
+            if(hr > 12){
+                hr = hr - 12;
+            }
+
+            var period = (date.getHours()) < 12 ? 'am' : 'pm';
+            min = (min < 10) ? "0" + min : min;
+            sec = (sec < 10) ? "0" + sec : sec;
+
+            var currentTime = hr + ":" + min + ":" + sec + " " + period; 
+
+            options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'};
+            document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
+            
+
+            if(setTime == currentTime) {
+                alert("success");
+                }
+
+        }, 1000);
+
     };
 
 
