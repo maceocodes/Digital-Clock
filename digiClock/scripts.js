@@ -26,13 +26,17 @@ setInterval(function(){
 
 
 //toggle visability for dropdown menus, current time display, cancel button, set/save buttons. 
+    var setClick = true;
     var set = document.getElementById("setBttn");
+    var alarmStatus = document.getElementById("setTimeDisplay");
     var timeVis = document.getElementById("displayTime");
     var cancelVis = document.getElementById("cancelBttn");
     var inputVis = document.getElementById("setInput");
     var amPmVis = document.getElementById("am-pm");
     var hrVis = document.getElementById("hr-select");
     var minVis = document.getElementById("min-select");
+    
+    
 
 //am/pm button, cancel button, dropdown menus hidden upon page load
     var eToHide = document.getElementsByClassName("savOrCncl");
@@ -42,7 +46,6 @@ setInterval(function(){
     }
 
     document.getElementById('setBttn').addEventListener('click', (function() {
-            var setClick = true;
             return function() {
             setClick ? enterTime() : saveTime();
             setClick = !setClick;
@@ -59,6 +62,7 @@ setInterval(function(){
         amPmVis.style.display = 'block'
         cancelVis.style.display = 'block';
         set.innerText = 'save';
+        
     };
 
     function saveTime() {
@@ -78,6 +82,7 @@ setInterval(function(){
         
         var setMin = (setMin < 10) ? "0" + setMin : setMin;
         var setTime = setHr + ":" + setMin + ":" + "00" + " " + setPeriod;
+        
     
 //get currentTime again
         setInterval(function(){
@@ -99,17 +104,34 @@ setInterval(function(){
             sec = (sec < 10) ? "0" + sec : sec;
 
             var currentTime = hr + ":" + min + ":" + sec + " " + period; 
-
             options = {weekday: 'short', year: 'numeric', month: 'short', day: '2-digit'};
             document.getElementById("displayDate").innerHTML = date.toLocaleDateString("en-US", options);
             
-
+//confirm time selected for alarm matches the current time
             if(setTime == currentTime) {
                 alert("success");
-                }
-
+            }
         }, 1000);
 
+//If the user does not select an they will be prompted to do so
+        if(setHr == "0") {
+            alert("whoops, looks like you forgot to set the hour");
+            setClick = true;
+            enterTime();
+        } else {
+            document.getElementById("setTimeDisplay").innerHTML = setTime;
+        }
+
+//If the user does not select a period will be prompted to do so
+        if(setPeriod == "am/pm") {
+            alert("whoops, looks like you forgot to set the the period");
+            setClick = true;
+            enterTime();
+        } else {
+            document.getElementById("setTimeDisplay").innerHTML = setTime;
+        }
+
+        
     };
 
 
