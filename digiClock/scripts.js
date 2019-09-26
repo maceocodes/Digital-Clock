@@ -62,6 +62,17 @@ setInterval(function(){
         amPmVis.style.display = 'block'
         cancelVis.style.display = 'block';
         set.innerText = 'save';
+
+        document.getElementById('cancelBttn').addEventListener('click', function(){
+            var confirmReturn = confirm("cancel selection and return to homepage?");
+            if (confirmReturn == true){
+                setClick = false;
+                saveTime();
+            } else {
+                return false
+            }
+            
+        });
         
     };
 
@@ -75,12 +86,13 @@ setInterval(function(){
         set.style.display = 'block';
         set.innerText = 'set';
 
+
+    
+
 //retrieve user selections
         var setHr = document.getElementById('hr-select').value;
         var setMin = document.getElementById('min-select').value;
         var setPeriod = document.getElementById('am-pm').value;
-        
-        var setMin = (setMin < 10) ? "0" + setMin : setMin;
         var setTime = setHr + ":" + setMin + ":" + "00" + " " + setPeriod;
         
     
@@ -124,15 +136,15 @@ setInterval(function(){
 
 //If the user does not select a period will be prompted to do so
         if(setPeriod == "am/pm") {
-            alert("whoops, looks like you forgot to set the the period");
+            alert("whoops, looks like you forgot to set the the period.  AM or Pm?");
             setClick = true;
             enterTime();
         } else {
             document.getElementById("setTimeDisplay").innerHTML = setTime;
         }
-
         
     };
+
 
 
  //cancel button returns user to time display
