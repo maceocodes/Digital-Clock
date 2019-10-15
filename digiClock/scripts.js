@@ -63,16 +63,49 @@ setInterval(function(){
         cancelVis.style.display = 'block';
         set.innerText = 'save';
 
-        document.getElementById('cancelBttn').addEventListener('click', function(){
+// cancel to return to original page
+        function cancelEntry(){
             var confirmReturn = confirm("cancel selection and return to homepage?");
             if (confirmReturn == true){
-                setClick = false;
-                saveTime();
+                setClick = true;
+                timeVis.style.display = 'block';
+                hrVis.style.display = 'none';
+                minVis.style.display = 'none';
+                amPmVis.style.display = 'none'
+                cancelVis.style.display = 'none';  
+                set.style.display = 'block';
+                set.innerText = 'set'; 
+                cancelVis.removeEventListener('click', cancelEntry);
             } else {
-                return false
+                return false;
             }
-            
-        });
+        };
+
+        cancelVis.addEventListener('click', cancelEntry, false);
+
+        
+
+       
+
+
+
+
+        // cancelVis.addEventListener('click', function(){
+        //     var confirmReturn = confirm("cancel selection and return to homepage?");
+        //     if (confirmReturn == true){
+        //         setClick = true;
+        //         timeVis.style.display = 'block';
+        //         hrVis.style.display = 'none';
+        //         minVis.style.display = 'none';
+        //         amPmVis.style.display = 'none'
+        //         cancelVis.style.display = 'none';  
+        //         set.style.display = 'block';
+        //         set.innerText = 'set'; 
+        //     } else {
+        //         return false;
+        //     }
+        // });
+        
         
     };
 
@@ -86,9 +119,6 @@ setInterval(function(){
         set.style.display = 'block';
         set.innerText = 'set';
 
-
-    
-
 //retrieve user selections
         var setHr = document.getElementById('hr-select').value;
         var setMin = document.getElementById('min-select').value;
@@ -96,7 +126,7 @@ setInterval(function(){
         var setTime = setHr + ":" + setMin + ":" + "00" + " " + setPeriod;
         
     
-//get currentTime again
+//get currentTime
         setInterval(function(){
             var date = new Date();
             var hr = date.getHours();
@@ -125,7 +155,8 @@ setInterval(function(){
             }
         }, 1000);
 
-//If the user does not select an they will be prompted to do so
+        
+//If the user does not select an hour they will be prompted to do so
         if(setHr == "0") {
             alert("whoops, looks like you forgot to set the hour");
             setClick = true;
@@ -145,6 +176,10 @@ setInterval(function(){
         
     };
 
+
+
+
+    
 
 
  //cancel button returns user to time display
