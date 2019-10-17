@@ -80,9 +80,7 @@ setInterval(function(){
                 set.innerText = 'set'; 
                 clearTime.style.display = 'block';
                 cancelVis.removeEventListener('click', cancelEntry);
-                clearTime.addEventListener('click', function(){
-                    alert('cleared');
-                });
+
             } else {
                 return false;
             }
@@ -165,21 +163,17 @@ setInterval(function(){
         var minSelect = document.getElementById("min-select");
         var periodSelect = document.getElementById("period");
         
-        //clear user setTime 
-        clearTime.addEventListener('click', function(){
-            hrSelect.selectedIndex = 0;
-            minSelect.selectedIndex = 0;
-            periodSelect.selectedIndex = 0;
-            alert('time cleared');
-            document.getElementById("setTimeDisplay").innerHTML = "";
-            event.stopPropagation();
-            clearTime.removeEventListener('click', cancelEntry);
-        });
+//clear user setTime 
+       var clearTimeHandler = function(){
+        hrSelect.selectedIndex = 0;
+        minSelect.selectedIndex = 0;
+        periodSelect.selectedIndex = 0;
+        alert('time cleared');
+        document.getElementById("setTimeDisplay").innerHTML = "";
+        clearTime.removeEventListener('click', clearTimeHandler, false);
+       };
 
-
-
-        
-
+       clearTime.addEventListener('click', clearTimeHandler, false);
 
     };
 
