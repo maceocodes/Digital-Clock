@@ -25,16 +25,17 @@ setInterval(function(){
 }, 1000);
 
 
-//toggle visability for dropdown menus, current time display, cancel button, set/save buttons. 
+//toggle visability for dropdown menus, current time display, cancel button, set/save buttons, and clear time buttons. 
     var setClick = true;
     var set = document.getElementById("setBttn");
     var alarmStatus = document.getElementById("setTimeDisplay");
     var timeVis = document.getElementById("displayTime");
     var cancelVis = document.getElementById("cancelBttn");
     var inputVis = document.getElementById("setInput");
-    var amPmVis = document.getElementById("am-pm");
+    var amPmVis = document.getElementById("period");
     var hrVis = document.getElementById("hr-select");
     var minVis = document.getElementById("min-select");
+    var clearTime = document.getElementById("clearBttn");
     
     
 
@@ -62,6 +63,8 @@ setInterval(function(){
         amPmVis.style.display = 'block'
         cancelVis.style.display = 'block';
         set.innerText = 'save';
+        clearTime.style.display = 'none';
+
 
 // cancel to return to original page
         function cancelEntry(){
@@ -75,7 +78,11 @@ setInterval(function(){
                 cancelVis.style.display = 'none';  
                 set.style.display = 'block';
                 set.innerText = 'set'; 
+                clearTime.style.display = 'block';
                 cancelVis.removeEventListener('click', cancelEntry);
+                clearTime.addEventListener('click', function(){
+                    alert('cleared');
+                });
             } else {
                 return false;
             }
@@ -84,45 +91,25 @@ setInterval(function(){
         cancelVis.addEventListener('click', cancelEntry, false);
 
         
-
-       
-
-
-
-
-        // cancelVis.addEventListener('click', function(){
-        //     var confirmReturn = confirm("cancel selection and return to homepage?");
-        //     if (confirmReturn == true){
-        //         setClick = true;
-        //         timeVis.style.display = 'block';
-        //         hrVis.style.display = 'none';
-        //         minVis.style.display = 'none';
-        //         amPmVis.style.display = 'none'
-        //         cancelVis.style.display = 'none';  
-        //         set.style.display = 'block';
-        //         set.innerText = 'set'; 
-        //     } else {
-        //         return false;
-        //     }
-        // });
-        
-        
     };
 
+
+//save user selection and set the alarm.
     function saveTime() {
-//second click to save user selection and set the alarm.
         timeVis.style.display = 'block';
         hrVis.style.display = 'none';
         minVis.style.display = 'none';
         amPmVis.style.display = 'none'
         cancelVis.style.display = 'none'; 
         set.style.display = 'block';
+        clearTime.style.display = 'block';
         set.innerText = 'set';
+        
 
-//retrieve user selections
+//retrieve user selections and display to DOM
         var setHr = document.getElementById('hr-select').value;
         var setMin = document.getElementById('min-select').value;
-        var setPeriod = document.getElementById('am-pm').value;
+        var setPeriod = document.getElementById('period').value;
         var setTime = setHr + ":" + setMin + ":" + "00" + " " + setPeriod;
         
     
@@ -173,7 +160,27 @@ setInterval(function(){
         } else {
             document.getElementById("setTimeDisplay").innerHTML = setTime;
         }
+
+        var hrSelect = document.getElementById("hr-select");
+        var minSelect = document.getElementById("min-select");
+        var periodSelect = document.getElementById("period");
         
+        //clear user setTime 
+        clearTime.addEventListener('click', function(){
+            hrSelect.selectedIndex = 0;
+            minSelect.selectedIndex = 0;
+            periodSelect.selectedIndex = 0;
+            alert('time cleared');
+            document.getElementById("setTimeDisplay").innerHTML = "";
+            event.stopPropagation();
+            clearTime.removeEventListener('click', cancelEntry);
+        });
+
+
+
+        
+
+
     };
 
 
