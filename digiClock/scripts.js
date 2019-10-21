@@ -76,9 +76,9 @@ setInterval(function(){
                 minVis.style.display = 'none';
                 amPmVis.style.display = 'none'
                 cancelVis.style.display = 'none';  
-                set.style.display = 'block';
+                set.style.display = 'inline-block';
                 set.innerText = 'set'; 
-                clearTime.style.display = 'block';
+                clearTime.style.display = 'inline-block';
                 cancelVis.removeEventListener('click', cancelEntry);
 
             } else {
@@ -99,8 +99,8 @@ setInterval(function(){
         minVis.style.display = 'none';
         amPmVis.style.display = 'none'
         cancelVis.style.display = 'none'; 
-        set.style.display = 'block';
-        clearTime.style.display = 'block';
+        set.style.display = 'inline-block';
+        clearTime.style.display = 'inline-block';
         set.innerText = 'set';
         
 

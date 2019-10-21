@@ -1,16 +1,31 @@
 .clock-display {
     text-align: center;
-    width: 10%;
+    margin: auto;   
+}
+
+#clearBttn {
+    display: inline-block;
+}
+
+#displayTime {
     margin: auto;
-    text-align: center;
-   
+    margin-top: 25%;
     
 }
 
+
+/* ------------------------------------------------- */
+
 .savOrCncl {
     text-align: center;
-    width: 10%;
     margin: auto;
-    text-align: center;
-    
 }
+
+#hr-select {
+    margin: auto;
+    margin-top: 25%;
+    display: block;
+    height: 30%;
+}
+
+
