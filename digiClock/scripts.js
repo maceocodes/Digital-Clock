@@ -37,7 +37,20 @@ setInterval(function(){
     var minVis = document.getElementById("min-select");
     var clearTime = document.getElementById("clearBttn");
     
-    
+
+
+//alarm audio  
+    var audio = new Audio('rainforest_ambience.mp3'); 
+
+    playAudio = function(){
+        audio.loop = true;
+        audio.play(); 
+    }
+
+    stopAudio = function(){
+        audio.pause();
+    }
+
 
 //am/pm button, cancel button, dropdown menus hidden upon page load
     var eToHide = document.getElementsByClassName("savOrCncl");
@@ -61,8 +74,9 @@ setInterval(function(){
         hrVis.style.display = 'block';
         minVis.style.display = 'block';
         amPmVis.style.display = 'block'
-        cancelVis.style.display = 'block';
-        set.innerText = 'save';
+        cancelVis.style.display = 'inline-block';
+        set.style.display = 'inline-block';
+        set.innerText = 'Save';
         clearTime.style.display = 'none';
 
 
@@ -77,7 +91,7 @@ setInterval(function(){
                 amPmVis.style.display = 'none'
                 cancelVis.style.display = 'none';  
                 set.style.display = 'inline-block';
-                set.innerText = 'set'; 
+                set.innerText = 'Set Time'; 
                 clearTime.style.display = 'inline-block';
                 cancelVis.removeEventListener('click', cancelEntry);
 
@@ -101,7 +115,7 @@ setInterval(function(){
         cancelVis.style.display = 'none'; 
         set.style.display = 'inline-block';
         clearTime.style.display = 'inline-block';
-        set.innerText = 'set';
+        set.innerText = 'Set Time';
         
 
 //retrieve user selections and display to DOM
@@ -136,7 +150,9 @@ setInterval(function(){
             
 //confirm time selected for alarm matches the current time
             if(setTime == currentTime) {
-                alert("success");
+                playAudio();
+                alert(setTime);
+                stopAudio();
             }
         }, 1000);
 

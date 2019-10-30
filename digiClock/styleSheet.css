@@ -1,3 +1,16 @@
+.hrDiv {
+    margin: .3em;
+}
+
+.minDiv {
+    margin: .3em;
+}
+
+.periodDiv {
+    margin: .3em;
+}
+
+
 .clock-display {
     text-align: center;
     margin: auto;   
@@ -10,15 +23,32 @@
 #displayTime {
     margin: auto;
     margin-top: 25%;
-    
+    font-size: 3em;
+    padding: .1em;
+    color: #21313B;
 }
 
+#displayDate {
+    font-size: 1.3em;
+    padding: .2em;
+    color: #21313B;
+}
+
+#setTimeDisplay {
+    font-size: 2em;
+    padding: .2em;
+    color: #D6443C;
+}
 
 /* ------------------------------------------------- */
 
 .savOrCncl {
     text-align: center;
     margin: auto;
+}
+
+#cancelBttn {
+    display: inline-block;
 }
 
 #hr-select {
@@ -29,3 +59,35 @@
 }
 
 
+/* body------------------------------------------ */
+
+body {
+    background: url("forest.jpg") #475937;
+    font-family: Helvetica, Tahoma, sans-serif;
+}
+
+button {
+    font-size: 1em;
+    color: #21313B;
+    background: transparent;
+    border: #21313B solid .1.1em;
+    border-radius: 5px;
+    padding: .1em 1.5em;
+}
+
+button:hover {
+    font-size: 1.1em;
+    
+}
+
+select {
+    line-height: 20px;
+    padding: .2em;
+    background-color: transparent;
+    border: .1em solid;
+}
+
+select option { 
+    padding: 1em;
+    background-color: transparent;
+}
